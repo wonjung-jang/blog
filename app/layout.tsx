@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
 import "../styles/globals.css";
-
-const notoSansKr = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  preload: true,
-});
+import Header from "@/app/Header";
+import Footer from "@/app/Footer";
 
 export const metadata: Metadata = {
-  title: "원정기",
-  description: "개발 관련 및 일상을 기록합니다.",
+  title: "원정 기록",
+  description: "나의 개발, 일상 원정 기록",
 };
 
 export default function RootLayout({
@@ -19,8 +14,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body className={`${notoSansKr.className} font-sans`}>{children}</body>
+    <html lang="ko" className="break-keep text-gray800">
+      <body className="font-sans">
+        <Header />
+        <main>
+          <div className="mt-24 mx-auto min-w-[981px] color-bg-lime700 min-h-[50vh]">
+            {children}
+          </div>
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
